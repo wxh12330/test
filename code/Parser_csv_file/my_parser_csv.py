@@ -9,8 +9,7 @@ import IPy
 
 FILE_PATH = "./"
 FILE_FORMAT = (".csv",)
-WRITH_IP_INFO_PATH = "./ip_info.txt"
-WRITE_PROVINCE_INFO_PATH = "./province_info.txt"
+WRITH_IP_INFO_PATH = "./IpFlowDirLib.txt"
 
 PROVINCE_ID = {"北京": "2", "安徽": "3", "福建": "4", "甘肃": "5", "广东": "6", "广西": "7",
                "贵州": "8", "海南": "9", "河北": "10", "河南": "11", "黑龙江": "12", "湖北": "13", "湖南": "14",
@@ -75,7 +74,7 @@ class CSV(object):
         """
         if rows[3] == '' and rows[4] == '':
             return 1
-        if (IPy.IP(rows[3]).version() == 4) and (IPy.IP(rows[4]).version() == 4) and (
+        if ((IPy.IP(rows[3]).version() == 4) and (IPy.IP(rows[4]).version() == 4)) and (
                 (len(rows[3].split(".")) != 4) or (len(rows[4].split(".")) != 4)):
             return 1
         return 0
