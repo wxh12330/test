@@ -152,9 +152,10 @@ class CSV(object):
                 if ip_exist == 1:
                     continue
                 rows = self.csv_file_ip_legal(rows)
-                ip_info_list = [rows[0], rows[2], rows[3], rows[4]]
+                ip_info_list = (rows[0], rows[2], rows[3], rows[4])
                 ip_sort_list.append(ip_info_list)
-            finall_content = sorted(ip_sort_list, key=lambda x: x[0], reverse=False)  # 升序
+            finall_content = set(tuple(ip_sort_list))
+            finall_content = sorted(finall_content, key=lambda x: x[0], reverse=False)  # 升序
             for line_content in finall_content:
                 print(line_content)
                 write_ip.writelines(",".join(line_content) + '\n')
